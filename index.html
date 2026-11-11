@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday – Now Streaming</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#141414;--card:#2f2f2f;--text:#fff;--muted:#b3b3b3;--accent:#e50914;--gold:#46d369;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141414}}
+:root[data-theme="dark"]{--bg:#141414}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,sans-serif;overflow-x:hidden}
+.nav{position:absolute;top:0;left:0;right:0;padding:18px 4%;display:flex;align-items:center;gap:20px;z-index:5}
+.logo{font-family:'Bebas Neue',Impact,sans-serif;font-size:2rem;color:var(--accent);letter-spacing:2px}
+.nav span{color:var(--muted);font-size:.9rem}
+.hero{min-height:78vh;display:flex;align-items:flex-end;padding:0 4% 7vh;background:
+ radial-gradient(900px 500px at 80% 20%,#ff3d6e55,transparent 60%),
+ radial-gradient(700px 500px at 10% 90%,#ffc85733,transparent 60%),
+ linear-gradient(180deg,#2a1635 0%,var(--bg) 100%)}
+.hero-in{max-width:640px}
+.tag{color:var(--gold);font-weight:700;margin:0 0 8px}
+h1{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:clamp(3.4rem,11vw,7.5rem);line-height:.9;margin:0 0 14px;letter-spacing:1px}
+.meta{color:var(--muted);margin:0 0 14px;font-size:.95rem}
+.hero p.d{font-size:1.05rem;line-height:1.5;margin:0 0 22px;max-width:52ch}
+.btn{border:0;border-radius:6px;padding:12px 26px;font:700 1rem 'DM Sans',sans-serif;cursor:pointer;margin-right:10px}
+.btn.p{background:var(--text);color:#120d18}.btn.s{background:#ffffff26;color:var(--text)}
+.btn:focus-visible,.card:focus-visible,.arrow:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.row{padding:8px 0 14px;position:relative}
+.row h2{font-size:1.25rem;margin:18px 4% 10px}
+.track{display:flex;gap:10px;overflow-x:auto;padding:6px 4% 14px;scroll-snap-type:x proximity;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.card{flex:0 0 auto;width:clamp(150px,22vw,260px);aspect-ratio:16/10;border-radius:6px;position:relative;overflow:hidden;cursor:pointer;scroll-snap-align:start;border:0;padding:0;color:var(--text);background:var(--card);transition:transform .2s}
+.card:hover{transform:scale(1.07);z-index:2}
+.card.tall{aspect-ratio:2/3;width:clamp(120px,15vw,190px)}
+.card img,.card video{width:100%;height:100%;object-fit:cover;display:block}
+.ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.6rem}
+.cap{position:absolute;left:0;right:0;bottom:0;padding:22px 10px 8px;font-size:.85rem;font-weight:500;text-align:left;background:linear-gradient(transparent,#000c)}
+.rank{position:absolute;left:8px;top:2px;font-family:'Bebas Neue',Impact,sans-serif;font-size:3.4rem;color:var(--gold);text-shadow:0 2px 8px #000}
+.arrow{position:absolute;top:50%;width:40px;height:90px;margin-top:-30px;background:#000a;color:#fff;border:0;font-size:1.6rem;cursor:pointer;z-index:3;display:none}
+.row:hover .arrow{display:block}.arrow.l{left:0}.arrow.r{right:0}
+@media (hover:none){.arrow{display:none!important}}
+footer{text-align:center;color:var(--muted);padding:40px 4% 60px}
+.modal{position:fixed;inset:0;background:#000d;display:none;align-items:center;justify-content:center;z-index:20;padding:16px}
+.modal.on{display:flex}
+.box{background:var(--card);border-radius:10px;max-width:860px;width:100%;max-height:90vh;overflow:auto}
+.media{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:5rem;background:#0008}
+.media img,.media video{width:100%;height:100%;object-fit:contain}
+.txt{padding:18px 22px 22px}.txt h3{margin:0 0 6px;font-size:1.3rem}.txt p{margin:0;color:var(--muted);line-height:1.5}
+.x{float:right;background:none;border:0;color:var(--text);font-size:1.8rem;cursor:pointer;margin:8px 12px 0 0}
+#cf{position:fixed;inset:0;pointer-events:none;z-index:30}
+@media (prefers-reduced-motion:reduce){.card{transition:none}}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif}
+[hidden]{display:none!important}
+.nav{position:fixed;background:linear-gradient(#000c,transparent);padding-top:calc(16px + env(safe-area-inset-top,0px));transition:background .3s}
+.nav.solid{background:#141414}
+.nav span{color:#e5e5e5;font-size:.85rem}
+.logo{font-size:2.3rem}
+.hero{min-height:88vh;align-items:center;padding:90px 4% 14vh;background:linear-gradient(90deg,#141414 5%,#141414b3 35%,transparent 75%),linear-gradient(0deg,#141414 0%,transparent 30%),radial-gradient(ellipse 60% 70% at 78% 40%,#e5091466,transparent 70%),linear-gradient(135deg,#2b0b0e,#0e0e12 70%)}
+.hero-in{max-width:560px}
+h1{font-size:clamp(3rem,9vw,6.5rem);text-shadow:0 2px 12px #0008}
+.tag{color:#46d369;font-weight:700;font-size:1rem}
+.chip{display:inline-block;border:1px solid #fff9;padding:0 6px;margin:0 8px;font-size:.8rem;color:#ddd;font-weight:400}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 28px;font-size:1.1rem;border-radius:4px}
+.btn.p{background:#fff;color:#000}.btn.p:hover{background:#ffffffbf}
+.btn.s{background:#6d6d6eb3;color:#fff}
+.rows{margin-top:-14vh;position:relative;z-index:2}
+.row h2{font-size:1.4rem;color:#e5e5e5}
+.card{border-radius:4px}
+.card:hover{transform:scale(1.12);box-shadow:0 12px 30px #000c}
+.rank{left:8px;top:auto;bottom:36px;font-size:5.5rem;color:transparent;-webkit-text-stroke:2px #fff;text-shadow:none}
+.box{background:#181818}
+.track{scroll-padding-left:4vw;gap:10px}
+.card,.card.tall{width:calc((100vw - 8vw - 20px)/3);aspect-ratio:16/9}
+@media (max-width:700px){.card,.card.tall{width:72vw}}
+.rank{font-size:6.5rem;bottom:30px}
+.pl{position:absolute;right:10px;top:10px;width:34px;height:34px;border-radius:50%;background:#000a;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.hero{position:relative;overflow:hidden}
+.himg{position:absolute;inset:0 0 0 30%;background-size:cover;background-position:center 25%;opacity:.75}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#141414 8%,#141414b3 38%,transparent 80%),linear-gradient(0deg,#141414 0%,transparent 35%)}
+.hero-in{position:relative;z-index:2}
+.cap:empty{display:none}
+.media{aspect-ratio:auto;height:min(72vh,560px)}
+.media iframe{width:100%;height:100%;border:0}
+.card.tall{aspect-ratio:16/9}
+</style>
+</head>
+<body>
+<div class="nav"><div class="logo" id="logo">BDAYFLIX</div><span>Home</span><span>Memories</span><span>Videos</span></div>
+
+<header class="hero">
+ <div class="hero-in">
+  <p class="tag">98% Match <span class="chip">U/A 18+</span> Season <span id="age">25</span> · 2026</p>
+  <h1 id="title">Alex: The Birthday Special</h1>
+  <p class="meta">New episode · All your favourite people · Rated F for Fun</p>
+  <p class="d">Another year, another season. Scroll through the best moments, the loudest laughs and the people who showed up for you.</p>
+  <button class="btn p" id="play">▶ Play</button><button class="btn s" id="more">ⓘ A note for you</button>
+ </div>
+</header>
+
+<main id="rows" class="rows"></main>
+<footer>Made with love by your friends. Happy Birthday! 🎂</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true"><div class="box">
+ <button class="x" id="close" aria-label="Close">×</button>
+ <div class="media" id="mm"></div>
+ <div class="txt"><h3 id="mt"></h3><p id="md"></p></div>
+</div></div>
+<canvas id="cf"></canvas>
+
+<script>
+/* ====== EDIT HERE ======
+   Each entry is a Google Drive file ID (the long code in the file's share link).
+   Folder must stay shared as "Anyone with the link". */
+var NAME="Shwetank", AGE=18;
+var HERO="1pi4jNYTZax4X2i3_ZjWaNphZLbbKsP7k";
+function ph(s){return s.split(" ").map(function(i){return {id:i}})}
+function vd(s){return s.split(" ").map(function(i,n){return {id:i,v:1,t:"Episode "+(n+1)}})}
+var REASONS=["Always shows up","Funniest person we know","Best advice, worst timing","Never lets us eat alone","Our favourite human"];
+var ROWS=[
+ {title:"Trending Memories",items:ph("14VyuIBrsj_lLBFjnBKt6sW85oMjb2Bjr 14tPYkkg9hhwC8rIPLZWKf-aIO0eBT_c7 1pi4jNYTZax4X2i3_ZjWaNphZLbbKsP7k 1PgJLZT_7uQNuBhpfUktuuQYFT3dQe3Ju 1a0eWGDYUkMmNyaMj_ANzoCZID1tOc6u6 15ewOMaZoZ4hRZmlL8WeEU8JTPi8JTaN7 1r1GYroPBHMPc9cKpGgYBRiqbx5neaLdT 1iynjeUiOY8Z0TnJVy88g57EzZ2oKIXVW 1oG3tc_qwqmQ8ubiYAtzCUtvhGP-Xk-M5 1mPMieTMnZdWvXl1N4qb97aOaWtQjMgRo 14DFAMnjrsTwq2JgsbLoz0xOT4xc7JoyF 1fE7EzRB6Jm_8jCtHCjtP2YzP4B7oulBr")},
+ {title:"Videos You Have to Watch",items:vd("1TQf0GWjNjoBms6z7A7-BGVnWHk0T8D_t 1blmPdluvQFsmWvqgezwJqLUS2Mra3bNG 1wC5o60uVqwclZo2fvHbcquCzeNipST2f 1jlq3R36wW-eNTQ0raY7QoYUjKxpaYr7C 1JP84TpxUBM5brA-tE5MwrLxtSVd20hw8 1mgP7Hf-6o96AQVvtgZETJL8nsSjelAtu 1tB0Qcp6-nAJGrycgrmB_MA5TN6RRCovp 1p3VF654wBZOGFqYr3FCPV_HBi3DDkHK5 1qL9A4j8DlFmKRzHXa0Mfdkh6GN3wyA_v 1ugJyctQjGySzW6qIb-EteFodxab0cqQn 1xtEPY29bTa7Q8KT0b4DRqX2PXZsqTxEg")},
+ {title:"Top 5 Reasons You're the Best",rank:true,items:ph("1XLog-d3og5fYMII3hWfzTUvFlRlx2BOz 15UMC82EIobsL-RbSDT0qbxr4ixxLtcUr 1G2e7gbOKbnmMtpEPC_c8Ox1q9Dw1pB_B 115f2GezH7bE9EUeSz1GusfVwNCSDq4Z- 1ku6HBhJuiGzT43ObQICkGruUgH6L_3IM").map(function(o,i){o.t=REASONS[i];return o})},
+ {title:"More Memories",items:ph("10L-CMyP3svr8qkGewrErwZVXus8OdXA8 1ncKHWvaxMy_h8GfDRiCvkLKg9S1pe7pi 1YY_taDpYzYkR4W9kH7CBngqQTCchjI0z 1chgOhyQq4ZHTb5j8JV9CoirSA2HkBNPF 1GDyaEfwcnF3N4Z1B3qNYSEPQ0t9XLyxj 1SVyjEikYgPlUa536u0tIj-mWw7dZiws5 1eKrV8mib-lpWBnBmAq1TTt7krmFQwACT 1LAnH3NU8MBNdutwOnmwWsmf8fYgPQ5EY 1VZ6jMA2AGBe2GvsERtouhrKU_W_p23P5 1LnNqyLvP_08Vc9bulkpZeHpL0AJzHiUf 1M85xzdFbjijvIeP4FAq08wV5vrWP531V")},
+ {title:"The Throwback Collection",items:ph("1yLl5MogCCEBZWnV1fqq3MuUu__y60ywe 1TNrZkuilBgldnYBO2xlQmCsyoUChW0l1 16-dB2B8GY7hlbS7LEbtN7vUISSjlGpah 1T8TXrXus1qWiVIqLZTIck0JQSSC9ANZw 1KjbpIZ4SddNNVhfKpzy7TwE0zTSz7x6z 1lwtPYeqPHxDhIdNq8_IZWEnYaOMc4NnZ 1FayurusUaBxdUYtLUx72uujbVVO1u4Xt 1MwQFQF8djyG6jni8N0vhnzAqQana4rzU 1A6LTr4Eej2ZIzZUmGyBBvQPiTL48uCMd 1Yl2VMV0B5-hxIRxzjG5jHhUu7FRilije 1oW2-7XNOjesqDzx8k-Nud_ZCSGCdTNuY 1NuI61QaQkhSZqZrVB2kkCCJnkMzGNer7 1wDY-VIfd-iHJEnaXs_IaySGK1jxk-j68 1RXHYQXw-hDCvfE7njTeSzoj1mrekWooq")}
+];
+var NOTE="Happy 18th Birthday, Shwetank! Here is to a new season, with the best people in it. Edit this note in index.html.";
+/* ====== END EDIT ====== */
+
+var $=function(i){return document.getElementById(i)};
+$("title").textContent=NAME+": The Birthday Special";$("age").textContent=AGE;
+document.title="Happy Birthday "+NAME;
+function th(id,w){return "https://drive.google.com/thumbnail?id="+id+"&sz=w"+w}
+function media(it){return '<img src="'+th(it.id,800)+'" alt="" loading="lazy" referrerpolicy="no-referrer">'+(it.v?'<span class="pl">▶</span>':'')}
+function open_(it){
+ $("mm").innerHTML=!it.id?'<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#e50914,#4a0a0e)">'+it.e+'</div>'
+  :it.v?'<iframe src="https://drive.google.com/file/d/'+it.id+'/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>'
+  :'<img src="'+th(it.id,2000)+'" alt="" referrerpolicy="no-referrer">';
+ $("mt").textContent=it.t||"";$("md").textContent=it.d||"";$("modal").classList.add("on");$("close").focus();
+}
+var all=[];
+ROWS.forEach(function(r){
+ var s=document.createElement("section");s.className="row";
+ s.innerHTML='<h2></h2><button class="arrow l" aria-label="Scroll left">‹</button><div class="track"></div><button class="arrow r" aria-label="Scroll right">›</button>';
+ s.querySelector("h2").textContent=r.title;
+ var tr=s.querySelector(".track");
+ r.items.forEach(function(it,i){
+  all.push(it);
+  var b=document.createElement("button");b.className="card"+(r.tall?" tall":"");
+  b.innerHTML=media(it)+(r.rank?'<span class="rank">'+(i+1)+'</span>':'')+'<span class="cap"></span>';
+  b.querySelector(".cap").textContent=it.t||"";
+  b.onclick=function(){open_(it)};tr.appendChild(b);
+ });
+ s.querySelector(".l").onclick=function(){tr.scrollBy({left:-tr.clientWidth*.8,behavior:"smooth"})};
+ s.querySelector(".r").onclick=function(){tr.scrollBy({left:tr.clientWidth*.8,behavior:"smooth"})};
+ $("rows").appendChild(s);
+});
+$("close").onclick=close_;
+$("modal").onclick=function(e){if(e.target===this)close_()};
+document.addEventListener("keydown",function(e){if(e.key==="Escape")close_()});
+$("more").onclick=function(){open_({t:"A note for "+NAME,d:NOTE,e:"🎂",c:"#ff3d6e,#7a1fa2"})};
+
+addEventListener("scroll",function(){document.querySelector(".nav").classList.toggle("solid",scrollY>40)});
+var hi=document.createElement("div");hi.className="himg";hi.style.backgroundImage="url("+th(HERO,1600)+")";document.querySelector(".hero").prepend(hi);
+/* confetti */
+function confetti(){
+ var c=$("cf"),x=c.getContext("2d");c.width=innerWidth;c.height=innerHeight;
+ var cols=["#ff3d6e","#ffc857","#2ec4b6","#4361ee","#fff"],p=[];
+ for(var i=0;i<140;i++)p.push({x:Math.random()*c.width,y:-20-Math.random()*c.height*.5,w:6+Math.random()*6,h:8+Math.random()*8,v:2+Math.random()*4,s:Math.random()*2-1,col:cols[i%5],r:Math.random()*6});
+ var f=0;(function a(){x.clearRect(0,0,c.width,c.height);
+  p.forEach(function(q){q.y+=q.v;q.x+=q.s;q.r+=.1;x.save();x.translate(q.x,q.y);x.rotate(q.r);x.fillStyle=q.col;x.fillRect(0,0,q.w,q.h);x.restore()});
+  if(++f<220)requestAnimationFrame(a);else x.clearRect(0,0,c.width,c.height)})();
+}
+$("play").onclick=function(){
+ if(!matchMedia("(prefers-reduced-motion:reduce)").matches)confetti();
+ document.querySelector(".row").scrollIntoView({behavior:"smooth"});
+};
+</script>
+</body>
+</html>
